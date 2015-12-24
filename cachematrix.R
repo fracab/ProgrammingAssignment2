@@ -1,7 +1,7 @@
-## First function create a list of functions that can be called to get the given matrix or its inverse (if this has already been calculated).
-## Second function solve a given matrix or give a cached value for the same solved matrix (if already calculated)
+## First function creates a list of functions that can be called to get the given matrix or its inverse (if this has already been calculated).
+## Second function solves a given matrix or give a cached value for the same solved matrix (if already calculated)
 
-### makeCacheMatrix create list of functions (set, get, setsolved, getsolved) for a given matrix
+### makeCacheMatrix creates list of functions (set, get, setsolved, getsolved) for a given matrix
 
 makeCacheMatrix <- function(x = matrix()) {
     inv <- NULL
@@ -14,7 +14,7 @@ makeCacheMatrix <- function(x = matrix()) {
     getsolved <- function() inv #fuctions that give back value of inverted matrix  (aka solve(x))
     list(set = set, get = get,
          setsolved = setsolved,
-         getsolved = getsolved) #create and gives as a result of the function the list of functions above
+         getsolved = getsolved) #creates and gives as a result of the function the list of functions above
 }
 
 ## #solve (give the inverse of) the given matrix. It takes a value cached if it has already been calculated instead of calculating it from scratch.
@@ -25,8 +25,8 @@ cacheSolve <- function(x, ...) {
         message("getting cached data")#message to give in case it uses getsolved instead of playing the function on his own
         return(inv)
     }
-    data <- x$get()#this is what the function does in case getsolved is empty. give name data to x.. 
-    inv <- solve(data,...)#...and solve x from scratch
+    data <- x$get()#this is what the function does in case getsolved is empty. gives name "data" to x.. 
+    inv <- solve(data,...)#...and then solves it from scratch
     x$setsolved(inv)
     inv
 }
